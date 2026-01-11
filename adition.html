@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BM 2nd-grade Addition</title>
+    <style>
+        body {
+           text-align: center;
+            background-color: #F9FAFB;
+            color: black;
+            font-family: system-ui, Arial, sans-serif;
+        }
+        a {
+            color: blue;
+        }
+        a:hover {
+            color: darkblue;
+        }
+        h1 {
+            color: #3B82F6;
+        }
+        .question-cards {
+            background-color: #3B82F6;
+            padding: 16px;
+            border-radius:3px;
+        }
+        .question {
+            background-color: white;
+            padding:12px;
+        }
+        button {
+            background-color:#F9FAFB;
+            border-radius:2px;
+            color: #1F2933;
+        }
+        button:disabled {
+            opacity:0.6;
+            cursor:not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <h1>Addition Practice</h1>
+    <p>Learn addition up to 20</p>
+    <hr>
+    <p>Addition is putting together.</p>
+    <br>
+    <p>Example: 7 + 8</p>
+    <p>Let's learn the steps to solve this problem.</p>
+    <ol>
+        <li>Start with the number 7</li>
+        <li>To add 8 to 7, you can count up from 7, 8 times.</li>
+        <li>Counting up: 8, 9, 10, 11, 12, 13, 14, 15</li>
+        <li>So, 7 + 8 = 15</li>
+        <li>Another way is by group adding</li>
+        <li>Break 8 into 3 and 5</li>
+        <li>First, add 3 to 7, 7 + 3 = 10</li>
+        <li>Then add 5 to 10, 10 + 5 = 15</li>
+        <li>Did you notice that both answers were the same?</li>
+        <li>Good job! 👍</li>
+    </ol>
+    <h2>Try these addition questions</h2>
+    <div class="question-cards">
+        <div class="question">
+         <p>1) 6 + 5 = ?</p>
+         <button data-correct="true">A: 11</button>
+         <button>B: 10</button>
+         <button>C: 12</button>
+         <p class="feedback" style="display:none;">6 + 5 = 11 because if you count up 5 times from 6, you get 11.</p>
+         </div>
+        <div class="question">
+        <p>2) 8 + 7 = ?</p>
+        <button>A: 14</button>
+        <button data-correct="true">B: 15</button>
+        <button>C: 16</button>
+        <p class="feedback" style="display:none;">8 + 7 = 15 because if you break 7 into 2 and 5, then do 8 + 2, which is 10, then do 10 + 5, the answer is 15</p>
+        </div>
+        <div class="question">
+        <p>3) 9 + 9 = ?</p>
+        <button>A: 17</button>
+        <button>B: 19</button>
+        <button data-correct="true">C: 18</button>
+        <p class="feedback" style="display:none;">9 + 9 = 18 because if you count up 9 times from 9, you get 18</p>
+        </div>
+        <div class="question">
+        <p>4) 7 + 8 = ?</p>
+        <button data-correct="true">A: 15</button>
+        <button>B: 14</button>
+        <button>C: 16</button>
+        <p class="feedback" style="display:none;">7 + 8 = 15 because if you break 8 into 3 and 5, and do 7 + 3, which is 10, then do 10 + 5, you get 15</p>
+        </div>
+         </div>
+    <p id="score" style="display:none"></p>
+    <a href="index.html">Back to home</a>
+    <br>
+    <a href="subtraction.html">Go to subtraction page</a>
+    <br> <br> <br> <br> <br> <hr>
+     © 2026 BM 2nd grade adition and subtraction
+    <script>
+   var buttons = document.querySelectorAll(".question button");
+   var score = 0;
+   var answeredQuestions = 0;
+   var totalQuestions = document.querySelectorAll(".question").length;
+
+   buttons.forEach(button => {
+       button.addEventListener("click", function() {
+        var question = button.parentElement;
+        var feedback = question.querySelector(".feedback");
+        var allButtons = question.querySelectorAll("button");
+        allButtons.forEach(btn => btn.disabled = true);
+        if (button.dataset.correct === "true") {
+            button.style.backgroundColor = "lightgreen";
+            button.style.color = "white";
+            score++;
+        } else {
+            button.style.backgroundColor = "red";
+            button.style.color = "white";
+        
+        }
+        feedback.style.display = "block";
+        answeredQuestions++;
+       if  (answeredQuestions === totalQuestions) {
+        var scoreDisplay = document.getElementById("score");
+        scoreDisplay.style.display = "block";
+        scoreDisplay.textContent = "Your score: " + score + " out of " + totalQuestions;
+       }
+       })
+   });
+    </script>
+</body>
+</html>
