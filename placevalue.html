@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BM 2nd grade place value </title>
+    <style>
+        body {
+           text-align: center;
+            background-color: #F9FAFB;
+            color: black;
+            font-family: system-ui, Arial, sans-serif;
+        }
+        a {
+            color: blue;
+        }
+        a:hover {
+            color: darkblue;
+        }
+        h1 {
+            color: #3B82F6;
+        }
+        .question-cards {
+            background-color: #3B82F6;
+            padding: 16px;
+            border-radius:3px;
+        }
+        .question {
+            background-color: white;
+            padding:12px;
+        }
+        button {
+            background-color:#F9FAFB;
+            border-radius:2px;
+            color: #1F2933;
+        }
+        button:disabled {
+            opacity:0.6;
+            cursor:not-allowed;
+        }
+        </style>
+</head>
+<body>
+    <h1>Place value</h1>
+    <p>Learn place value up to 100</p>
+    <hr>
+    <p>Place value is the value of where a digit is in a number.</p>
+    <br>
+    <p>Example, 477</p>
+    <ol>
+        <li>The 4 is in the hundereds place, so it is worth 400</li>
+        <li>One of the 7 is in the tens place, so it is worth 70</li>
+        <li>The other 7 is in the ones place, so it is worth just 7</li>
+        <li>So 477 is made up of 400 + 70 + 7</li>
+        <li>Good job 👍</li>
+    </ol>
+    <h2>Try these practice questions!</h2>
+    <div class="question-cards">
+        <div class="question">
+         <p>1) 456 = ?</p>
+         <button data-correct="true">A: 50 + 400 + 6</button>
+         <button>B: 400 + 60 + 5</button>
+         <button>C: 500 + 60 + 4</button>
+         <p class="feedback" style="display:none;">A, because, even if the order isn't perfect, it still shows that the 4 in 456 is worth 400, the 5 is worth 50 and that the 6 is worth 6</p>
+         </div>
+        <div class="question">
+        <p>2) 756 = ?</p>
+        <button>A: 500 + 70 + 6</button>
+        <button data-correct="true">B: 700 + 50 + 6</button>
+        <button>C: 600 + 50 + 7</button>
+        <p class="feedback" style="display:none;">B, because it shows that the 7 in 756 is worth 700, the 5 is worth 50, and the 6 is worth 6</p>
+        </div>
+        <div class="question">
+        <p>3) 819 = ?</p>
+        <button>A: 900 + 10 + 8</button>
+        <button>B: 100 + 9 + 10</button>
+        <button data-correct="true"> C: 800 + 10 + 9</button>
+        <p class="feedback" style="display:none;">C, because it shows that the 8 is worth 800, the 1 is worth 10, and the 9 is worth 9</p>
+        </div>
+        <div class="questio1n">
+        <p>4) 0345 = ?</p>
+        <button data-correct="true">A: 40 + 300 + 5</button>
+        <button>B: 30 + 40 + 5</button>
+        <button>C: 300 + 5 + 4</button>
+        <p class="feedback" style="display:none;">A, because even if order isn't perfect, it still shows that the 0 is worth 0, the 3 is worth 300, the 4 is worth 40 and the 5 is worth 5</p>
+        </div>
+         </div>
+    <p id="score" style="display:none"></p>
+    <script>
+   var buttons = document.querySelectorAll(".question button");
+   var score = 0;
+   var answeredQuestions = 0;
+   var totalQuestions = document.querySelectorAll(".question").length;
+
+   buttons.forEach(button => {
+       button.addEventListener("click", function() {
+        var question = button.parentElement;
+        var feedback = question.querySelector(".feedback");
+        var allButtons = question.querySelectorAll("button");
+        allButtons.forEach(btn => btn.disabled = true);
+        if (button.dataset.correct === "true") {
+            button.style.backgroundColor = "lightgreen";
+            button.style.color = "white";
+            score++;
+        } else {
+            button.style.backgroundColor = "red";
+            button.style.color = "white";
+        
+        }
+        feedback.style.display = "block";
+        answeredQuestions++;
+       if  (answeredQuestions === totalQuestions) {
+        var scoreDisplay = document.getElementById("score");
+        scoreDisplay.style.display = "block";
+        scoreDisplay.textContent = "Your score: " + score + " out of " + totalQuestions;
+       }
+       })
+   });
+    </script>
+</body>
+</html>
